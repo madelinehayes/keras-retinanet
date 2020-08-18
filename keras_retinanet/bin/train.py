@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Copyright 2017-2018 Fizyr (https://fizyr.com)
@@ -15,7 +15,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-
+from comet_ml import Experiment
 import argparse
 import os
 import sys
@@ -25,6 +25,7 @@ import keras
 import keras.preprocessing.image
 import tensorflow as tf
 
+experiment = Experiment(api_key="X9DWBiRJnHkCWSfVPffrbWv4u", project_name="steeple-jason")
 # Allow relative imports when being executed as script.
 if __name__ == "__main__" and __package__ is None:
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -230,8 +231,8 @@ def create_generators(args, preprocess_image):
             max_translation=(0.1, 0.1),
             min_shear=-0.1,
             max_shear=0.1,
-            min_scaling=(0.9, 0.9),
-            max_scaling=(1.1, 1.1),
+            min_scaling=(0.5, 0.5),
+            max_scaling=(1.5, 1.5),
             flip_x_chance=0.5,
             flip_y_chance=0.5,
         )
